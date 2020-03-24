@@ -20,16 +20,16 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Id</th>
-                        <td>{{ utilisation.id }}</td>
+                        <th>Date</th>
+                        <td>{{ utilisation.seance.date ? utilisation.seance.date|date('Y-m-d H:i:s') : ''  }}</td>
                     </tr>
                     <tr>
                         <th>Durée</th>
-                        <td>{{ utilisation.duree }}</td>
+                        <td>{{ utilisation.duree }} {{ utilisation.machine.uniteDuree }}</td>
                     </tr>
                     <tr>
-                        <th>Quantité</th>
-                        <td>{{ utilisation.quantite }}</td>
+                        <th>Quantité(s) / Vitesse</br>(Moyenne)</th>
+                        <td>{{ utilisation.quantite }} {{ utilisation.machine.uniteIntensite  }}</td>
                     </tr>
                     <tr>
                         <th>Ordre</th>
@@ -41,12 +41,12 @@
                     </tr>
                     <tr>
                         <th>Machine</th>
-                        <td>{{ utilisation.machine.nom }}</td>
+                        <td>{{ utilisation.machine.nom }} </br><img src="{{ utilisation.machine.logo }}" width="150px" alt="{{ utilisation.machine.logo }}"/></td>
                     </tr>
                 </tbody>
             </table>
 
-            <a class="btn btn-primary" href="{{ path('utilisation_index') }}" role="button">Retour</a>
+            <a class="btn btn-primary" href="{{ path('seance_show', {'id': utilisation.seance.id}) }}" role="button">Retour</a>
 
             <a class="btn btn-primary" href="{{ path('utilisation_edit', {'id': utilisation.id}) }}" role="button">Modifier</a>
 

@@ -19,7 +19,7 @@
 
             {{ include('utilisation/_form.html.twig', {'button_label': 'Update'}) }}
 
-            <a class="btn btn-primary" href="{{ path('utilisation_index') }}" role="button">Retour</a>
+            <a class="btn btn-primary" href="{{ path('seance_show', {'id': utilisation.seance.id}) }}" role="button">Retour</a>
 
             {{ include('utilisation/_delete_form.html.twig') }}
         </div>

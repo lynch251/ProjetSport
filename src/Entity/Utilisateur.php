@@ -1,11 +1,8 @@
 <?php namespace App\Entity;
 
-use App\Entity\Abonnement;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Entity()
@@ -69,6 +66,11 @@ class Utilisateur implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Seance", mappedBy="utilisateur")
      */
     private $seances;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $logo;
 
 
     /**
@@ -263,6 +265,18 @@ class Utilisateur implements UserInterface
                 $seance->setUtilisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }

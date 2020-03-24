@@ -3,14 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Seance;
-use App\Entity\Utilisateur;
-use App\Entity\Utilisation;
 use App\Form\SeanceType;
-use App\Repository\SeanceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/seance")
@@ -67,9 +63,11 @@ class SeanceController extends AbstractController
      */
     public function show(Seance $seance): Response
     {
+        $SeanceRepository = $this->getDoctrine()->getRepository(Seance::class);
+        $seance = $SeanceRepository->find($seance->getId());
+
         return $this->render('seance/show.html.twig', [
             'seance' => $seance,
-            'utilisations' => $utilisations = $seance->getUtilisations(),
         ]);
     }
 

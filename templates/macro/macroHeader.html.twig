@@ -3,7 +3,7 @@
 <header class="masthead">
     <div class="container">
         <div class="intro-text">
-            <div class="intro-lead-in"> Bienvenue {{ app.user.prenomUtilisateur }} !</div>
+            <div class="intro-lead-in"> Bienvenue {{ app.user.prenomUtilisateur }} !</br><img class="mt-3" src="{{ app.user.logo }}" width="80px" alt="profile"/></div>
             {%  if is_granted('ROLE_ADMIN') %}
                 Dash Admin
             {%  elseif is_granted('ROLE_USER') %}

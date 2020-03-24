@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Seance;
 use App\Entity\Utilisation;
 use App\Form\UtilisationType;
 use App\Repository\UtilisationRepository;
@@ -26,11 +27,21 @@ class UtilisationController extends AbstractController
     }
 
     /**
-     * @Route("/new/", name="utilisation_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="utilisation_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Seance $seance): Response
     {
         $utilisation = new Utilisation();
+        if (isset($seance))
+        {
+            $utilisation->setSeance($seance);
+            $nbUtilisations = 0;
+            foreach ($seance->getUtilisations() as $utilisationT) {
+                $nbUtilisations = $nbUtilisations+ $utilisationT->getOrdre();
+            }
+            $utilisation->setOrdre($nbUtilisations +1); // par défaut, on met l'ordre n+1 par rapport à l'ordre le plus grand.
+        }
+
         $form = $this->createForm(UtilisationType::class, $utilisation);
         $form->handleRequest($request);
 
@@ -39,7 +50,7 @@ class UtilisationController extends AbstractController
             $entityManager->persist($utilisation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('utilisation_index');
+            return $this->redirectToRoute('seance_index');
         }
 
         return $this->render('utilisation/new.html.twig', [
@@ -89,6 +100,6 @@ class UtilisationController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('utilisation_index');
+        return $this->redirectToRoute('seance_index');
     }
 }

@@ -18,37 +18,38 @@
         <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
             <h1>Mes séances</h1>
 
+
+            <a class="btn btn-primary mb-3" href="{{ path('seance_new') }}" role="button">Ajouter une nouvelle séance</a>
+            <a class="btn btn-success mb-3" href="{{ path('utilisation_index') }}" role="button">Voir toutes mes utilisations</a>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Date</th>
                         <th>Intitule</th>
-                        <th>actions</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for seance in listeSeances %}
                     <tr>
-                        <td>{{ seance.id }}</td>
                         <td>{{ seance.date ? seance.date|date('Y-m-d H:i:s') : '' }}</td>
                         <td>{{ seance.intitule }}</td>
                         <td>
 
                             <a class="btn btn-primary" href="{{ path('seance_show', {'id': seance.id}) }}" role="button">Voir</a>
                             <a class="btn btn-primary" href="{{ path('seance_edit', {'id': seance.id}) }}" role="button">Modifier</a>
+                            <a class="btn btn-danger" href="{{ path('seance_delete', {'id': seance.id}) }}" role="button">Supprimer</a>
                             <a class="btn btn-primary" href="{{ path('utilisation_new', {'id': seance.id}) }}" role="button">Ajouter des utilisations</a>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="4">no records found</td>
+                        <td colspan="4">Aucune séance pour l'instant !</td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-            <a class="btn btn-primary" href="{{ path('seance_new') }}" role="button">Ajouter une nouvelle séance</a>
-            <a class="btn btn-success" href="{{ path('utilisation_index') }}" role="button">Voir toutes mes utilisations</a>
+
         </div>
     </div>
 </div>

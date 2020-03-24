@@ -17,12 +17,21 @@
     <div class="row">
         <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
             <h1>{{ seance.intitule }}</h1>
+            <div class="d-inline-flex mt-3 mb-3">
+                <a class="btn btn-success mr-2" href="{{ path('utilisation_new', {'id': seance.id}) }}" role="button">+ Ajouter une utilisation</a></br>
+                <a class="btn btn-primary mr-2" href="{{ path('seance_edit', {'id': seance.id}) }}">Modifier</a>
+                {{ include('seance/_delete_form.html.twig') }}
+                <a class="btn btn-primary mr-2" href="{{ path('seance_index') }}" role="button">Retour</a>
+            </div>
 
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>Id</th>
-                        <td>{{ seance.id }}</td>
+                        <th>Athlète</th>
+                        <td>
+                            <img src="{{ seance.utilisateur.logo }}" width="80px" alt="{{ seance.utilisateur.logo }}"/></br>
+                            {{ seance.utilisateur.nomUtilisateur }}
+                        </td>
                     </tr>
                     <tr>
                         <th>Date</th>
@@ -33,42 +42,39 @@
                         <td>{{ seance.intitule }}</td>
                     </tr>
                 </tbody>
-
-                <tbody>
-
-                {% for utilisation in seance.utilisations %}
-                    <table class="table">
+            </table>
+                <table class="table">
                         <thead>
-                        <h2>Utilisations</h2>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Ordre</th>
-                            <th scope="col">Duree</th>
-                            <th scope="col">Quantité (rows)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{{ utilisation.id }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ utilisation.ordre }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ utilisation.duree }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ utilisation.quantite }}</td>
-                        </tr>
-                        {% endfor %}
+                            <h2>Utilisations</h2>
+                            <tr>
+                                <th>Ordre</th>
+                                <th>Durée</th>
+                                <th>Quantité(s) / Vitesse</br>(Moyenne)</th>
+                                <th>Machine (nom)</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for utilisation in seance.utilisations %}
+                                <tr>
+                                    <td>{{ utilisation.ordre }}</td>
+                                    <td>{{ utilisation.duree }} {{ utilisation.machine.uniteDuree }}</td>
+                                    <td>{{ utilisation.quantite }} {{ utilisation.machine.uniteIntensite }}</td>
+                                    <td>{{ utilisation.machine.nom }} </br><img src="{{ utilisation.machine.logo }}" width="150px" alt="{{ utilisation.machine.logo }}"/></td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{{ path('utilisation_show', {'id': utilisation.id}) }}">Voir</a>
+                                        <a class="btn btn-primary" href="{{ path('utilisation_edit', {'id': utilisation.id}) }}">Modifier</a>
+                                        <a class="btn btn-danger" href="{{ path('utilisation_delete', {'id': utilisation.id}) }}">Supprimer</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">Aucune utilisation pour l'instant !</td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
-                    </table>
-
-            <a class="btn btn-primary" href="{{ path('seance_edit', {'id': seance.id}) }}">Modifier</a>
-            {{ include('seance/_delete_form.html.twig') }}
-            <a class="btn btn-primary mt-3" href="{{ path('seance_index') }}" role="button">Retour</a>
-
-        </div>
+                </table>
+            </div>
     </div>
 </div>
 {% endblock %}
