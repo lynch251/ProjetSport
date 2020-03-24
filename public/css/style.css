@@ -1,0 +1,97 @@
+.soustitre{
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #3b444b;
+    font-family: "Gotham" !important;
+    line-height: 25px;
+    font-weight: bold;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    outline: 0;
+    margin-bottom: 0;
+    font-size: 18.72px;
+    padding: 20px;
+}
+
+.textePage{
+    -webkit-font-smoothing: antialiased;
+background: transparent;
+border: 0;
+margin: 0;
+padding: 0;
+vertical-align: baseline;
+outline: 0;
+font-family: Gotham !important;
+font-size: 12px;
+line-height: 17px;
+letter-spacing: 0px;
+font-weight: 400;
+font-style: normal;
+text-transform: none;
+color: #3b444b;
+margin-bottom: 0;
+text-align: justify;
+padding: 20px;
+}
+
+.styleImg{
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+    font-family: Gotham !important;
+    color: #3b444b;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    width: 565px;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.titrePrincipe{
+    text-align: right;
+outline: none;
+font: inherit;
+vertical-align: baseline;
+font-family: 'lobster';
+font-style: italic;
+color: #2EA6FC;
+font-size: 33px;
+margin: 0;
+padding: 0;
+border: 0;
+box-sizing: border-box;
+}
+
+body {
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+}
+
+/* Gestion des entetes hors accueil */
+header.masthead_text_black {
+    text-align: center;
+    color: #000000;
+    background-color:#3B444B;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
+
+.content_header {
+    margin-top:150px;
+    margin-bottom:150px;
+}

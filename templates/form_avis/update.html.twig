@@ -1,0 +1,13 @@
+{#\projetSynf\templates\form_avis\update.html.twig#}
+{% extends 'form_avis/index.html.twig' %}
+
+
+{% block formulaire %}
+    {{ form_start(form, {'action':path('edit_route') }) }}
+            {{ form_label(form.auteurAvis) }} {{ form_widget (form.auteurAvis) }}
+            {{ form_row(form.titreAvis) }}
+            {{ form_row(form.messageAvis) }}
+            {{ form_row(form.nbEtoileAvis) }}
+            <button type="submit" class="btn btn-primary">Modifier</button>
+    {{ form_end(form) }}
+{% endblock %}

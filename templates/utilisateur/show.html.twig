@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',10) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
+            <h1>Utilisateur</h1>
+
+            <table class="table table-hover table-sm table-responsive overflow-hidden">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ utilisateur.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Login</th>
+                        <td>{{ utilisateur.login }}</td>
+                    </tr>
+                    <tr>
+                        <th>NomUtilisateur</th>
+                        <td>{{ utilisateur.nomUtilisateur }}</td>
+                    </tr>
+                    <tr>
+                        <th>PrenomUtilisateur</th>
+                        <td>{{ utilisateur.prenomUtilisateur }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ utilisateur.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td>{{ utilisateur.password }}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+    <a class="btn btn-primary mt-3 mb-3" href="{{ path('utilisateur_edit', {'id': utilisateur.id}) }}" role="button">Modifier</a>
+    {{ include('utilisateur/_delete_form.html.twig') }}
+
+            <a href="{{ path('utilisateur_index') }}">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement d'un paiement {% endblock %}
+ {% block menu %}
+
+     {% import 'macro/macroMenu.html.twig' as macroMenu %}
+     {{ macroMenu.menu('Abdo en acier', 9) }}
+
+ {% endblock %}
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Enregistrement d'un paiement</h1>
+
+    {{ include('paiementAdmin/_form.html.twig') }}
+
+    <a href="{{ path('paiementAdmin_index') }}">back to list</a>
+{% endblock %}

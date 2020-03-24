@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement{% endblock %}
+
+ {% block menu %}
+
+     {% import 'macro/macroMenu.html.twig' as macroMenu %}
+     {{ macroMenu.menu('Abdo en acier', 9) }}
+
+ {% endblock %}
+
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Abonnement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ abonnement.id }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateValidite</th>
+                <td>{{ abonnement.dateValidite ? abonnement.dateValidite|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Renouveler</th>
+                <td>{{ abonnement.renouveler ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('abonnementAdmin_index') }}">back to list</a>
+
+    <a href="{{ path('abonnementAdmin_edit', {'id': abonnement.id}) }}">edit</a>
+
+    <form method="post" action="{{ path('abonnementAdmin_delete', {'id': abonnement.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ abonnement.id) }}">
+        <button class="btn">Delete</button>
+    </form>
+
+{% endblock %}

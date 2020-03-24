@@ -1,0 +1,43 @@
+{#\projetSynf\templates\accueil\offres.html.twig#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Abdo en acier{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',2) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="soustitre"> {{ offre.titre }} </p>
+                <p class="textePage">{{ offre.description }}</p>
+                <p class="textePage">{{ offre.modalite.titre }}</p>
+                <p class="textePage">{{ offre.modalite.description }}</p>
+                {%  if offre.modalite.periodiciteEngagement == "an" and offre.modalite.periodiciteReglement == "mois"  %}
+
+                    {% set parMois = offre.montant /12 %}
+                    <p class="textePage">{{ offre.montant }} € pour un an soit  {{ parMois }} € par mois</p>
+                {% else %}
+                    <p class="textePage">{{ offre.montant }} € {{ offre.modalite.periodiciteReglement }}</p>
+                {% endif %}
+                {{ form_start(formUtilisateur, {'action':path('inscrire',{'idOffre': offre.id}) }) }}
+                    {{ form_row(formUtilisateur.accordPolitiqueSite) }}
+                    <button type="submit" class="btn btn-primary">Oui, je veux m'inscrire !</button>
+                {{ form_end(formUtilisateur) }}
+
+                {% if message is defined  %}
+                        <div class="alert alert-danger">  {{ message }} </div>
+                {% endif %}
+            </div> {#{ url('admin_edit_location',{'id': l.idLocation}) }#}
+
+        </div>
+    </div>
+{% endblock %}

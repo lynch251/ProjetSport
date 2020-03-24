@@ -1,0 +1,52 @@
+{#\projetSynf\templates\accueil\index.html.twig#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Abdo en acier{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',3) }}
+
+{% endblock %}
+
+{% block body %}
+     <div class="container">
+        <div class="row">
+            <div class="col">
+                
+                <p class="textePage">Parce que chacun a ses objectifs et ses motivations, Abdos en acier vous offre une expérience sportive décomplexée et sur-mesure.
+
+Dans votre salle de sport, vous faites une pause, vous prenez soin de vous et de votre forme. Relax... Avec votre badge, vous accédez à tous les clubs Abdos en acier. C’est simple, agréable, sûr. C'est ça l'esprit !
+</p>
+            </div>
+            <div class="col">
+                <p class="titrePrincipe">Abdo en acier, c’est moi mais en mieux</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="titrePrincipe">Abdos en acier,   
+c'est la porte à côté</p>
+            </div>
+            <div class="col">
+                
+                <p class="textePage">Notre objectif est qu’il y ait forcément une salle Abdos en acier à côté de chez vous ou près de votre lieu de travail.
+
+C’est aussi ça être proche de vous : vous éviter les kilomètres inutiles pour une remise en forme sans stress. Des lieux confortables, agréables, accessibles et... pas cher. Abdos en acier, c’est la salle de sport qui pense d’abord à vous.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col textePage">
+               
+                <p class="textePage">Rendre nos salles accessible, c'est aussi l'un de nos engagements. Quand on vous dit « salle de sport pas cher »... Vous pouvez keepcooler à partir de 29,90€* par mois en profitant de services de qualité !
+
+Au mois ou par an… C’est vous qui choisissez votre formule d’abonnement. Et pour les étudiants, c’est plein d’avantages**...
+
+Le sport sans prise de tête côté budget, c’est aussi Abdos en acier.</p>
+            </div>
+            <div class="col">
+                 <p class="titrePrincipe">Abdos en acier, pourquoi dépenser plus ?</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

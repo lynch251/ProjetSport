@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur index{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',10) }}
+
+{% endblock %}
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Listes des utilisateurs</h1>
+
+    <table class="table">
+    <thead>
+    <tr>
+    <th>Rôle</th>
+    <th>Id</th>
+    <th>Login</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Email</th>
+    <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for role in roles %}
+        <tr>
+        <td>{{ role.titre }}</td>
+        <td></td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+
+        </td>
+        </tr>
+        {% for utilisateur in role.utilisateurs %}
+            <tr>
+            <td></td>
+            <td>{{ utilisateur.id }}</td>
+
+            <td>{{ utilisateur.login }}</td>
+            <td>{{ utilisateur.nomUtilisateur }}</td>
+            <td>{{ utilisateur.prenomUtilisateur }}</td>
+            <td>{{ utilisateur.email }}</td>
+            <td>
+            <a href="{{ path('utilisateur_show', {'id': utilisateur.id }) }}">Afficher</a>
+            <a href="{{ path('utilisateur_edit', {'id': utilisateur.id }) }}">Editer</a>
+            </td>
+            </tr>
+        {% else %}
+            <tr>
+            <td ></td>
+            <td colspan="6">Pas d'utilisateur de ce type</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+        <td colspan="7">Aucun rôle</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    <a href="{{ path('utilisateur_new') }}">Créer un nouvel utilisateur</a>
+{% endblock %}

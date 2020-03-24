@@ -1,0 +1,59 @@
+{#\projetSynf\templates\accueil\offres.html.twig#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Abdo en acier{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',2) }}
+
+{% endblock %}
+
+{% block body %}
+
+
+    <section class="pricing py-5">
+        <div class="container">
+            <div class="row">
+
+                {% for offre in listeOffre %}
+                <!-- Free Tier -->
+                <div class="col-lg-4">
+                    <div class="card mb-5 mb-lg-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-muted text-uppercase text-center">{{ offre.titre }}</h5>
+
+                                {%  if offre.modalite.periodiciteEngagement == "an" and offre.modalite.periodiciteReglement == "mois"  %}
+                                    {% set parMois = offre.montant /12 %}
+                                        <h6 class="card-price text-center">{{ parMois }} €<span class="period">/month</span></h6>
+                                        <h6 class="card-price text-center">{{ offre.montant }} €<span class="period">/an</span></h6>
+                                {% else %}
+                                        <h6 class="card-price text-center">{{ offre.montant }} € <span class="period">{{ offre.modalite.periodiciteReglement }}</span></h6>
+                                {% endif %}
+                            <hr>
+                            <ul class="fa-ul">
+                                <li><span class="fa-li"></span>{{ offre.description }}</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ offre.modalite.titre }}</li>
+                                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ offre.modalite.description }}</li>
+                            </ul>
+
+                            <form action="{{ path('choisirOffre',{'idOffre': offre.id}) }}" method="post">
+                                <a  class="btn btn-block btn-primary text-uppercase">Je m'abonne !</a>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+{% endblock %}

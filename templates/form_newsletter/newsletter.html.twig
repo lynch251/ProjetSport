@@ -1,0 +1,29 @@
+{#\projetSynf\templates\form_newsletter\newsletter.html.twig#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Abdo en acier{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',7) }}
+
+{% endblock %}
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    {% block formulaire %}
+        {{ form_start(form) }}
+                {{ form_label(form.mail) }} {{ form_widget (form.mail) }}
+                {{ form_label(form.nom) }} {{ form_widget (form.nom) }}
+                <input type="submit" name="action" class="btn btn-primary" value="Créer">
+                <input type="submit" name="action" class="btn btn-primary" value="Désinscription">
+
+        {{ form_end(form) }}  
+
+    {% endblock %}    
+    {% if message is defined %}
+        {{ message }}
+    {% endif %}
+{% endblock %}

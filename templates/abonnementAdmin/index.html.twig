@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+ {% block menu %}
+
+     {% import 'macro/macroMenu.html.twig' as macroMenu %}
+     {{ macroMenu.menu('Abdo en acier', 9) }}
+
+ {% endblock %}
+
+{% block title %}Abonnement index{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Listes des abonnements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Client</th>
+                <th>Offre</th>
+                <th>DateDebut</th>
+                <th>DateFin</th>
+                <th>DateValidite</th>
+                <th>Renouveler</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.client.nomUtilisateur }} {{ abonnement.client.prenomUtilisateur }}</td>
+                <td>{{ abonnement.offre.titre }} </td>
+                <td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ abonnement.dateValidite ? abonnement.dateValidite|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ abonnement.renouveler ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a  class="btn btn-primary" href="{{ path('abonnementAdmin_show', {'id': abonnement.id}) }}" role="button">Ouvrir</a>
+                    <a class="btn btn-primary" href="{{ path('abonnementAdmin_edit', {'id': abonnement.id}) }}" role="button">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas d'abonnement actuellement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('abonnementAdmin_new') }}">Créer un nouveau</a>
+{% endblock %}

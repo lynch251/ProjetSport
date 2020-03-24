@@ -1,0 +1,114 @@
+{#\projetSynf\templates\macro\macroMenu.html.twig#}
+
+{% macro menu(nomSalle, menuActif, utilisateur = "") %}
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">{{nomSalle}}</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          {% if is_granted('ROLE_ADMIN') %}
+          {% else %}
+            <li class="nav-item
+              {% if menuActif == 1 %}
+              active
+              {% endif %}">
+              <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
+            </li>
+            <li class="nav-item
+              {% if menuActif == 2 %}
+                  active
+              {% endif %}">
+              <a class="nav-link js-scroll-trigger" href="{{ path('accueil') }}#offres">Nos offres</a>
+            </li>
+            <li class="nav-item
+              {% if menuActif == 3 %}
+                  active
+              {% endif %}">
+              <a class="nav-link js-scroll-trigger" href="{{ path('accueil') }}#portfolio">Nos machines</a>
+            </li>
+
+            <li class="nav-item
+              {% if menuActif == 4 %}
+                  active
+              {% endif %}">
+                  <a class="nav-link js-scroll-trigger" href="{{ path('accueil') }}#avis">Avis</a>
+            </li>
+          {% endif %}
+          {% if is_granted('ROLE_USER') %}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if menuActif == 8 %}
+                active
+                {% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mon Abonnement
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ path('abonnement_index') }}">Mon abonnement</a>
+              <a class="dropdown-item" href="{{ path('paiement_index') }}">Mes paiements</a>
+              <a class="dropdown-item" href="{{ path('seance_index') }}">Mes séances</a>
+            </div>
+          </li>
+
+          {%  elseif is_granted('ROLE_ADMIN') %}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if menuActif == 9 %}
+              active
+              {% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Administration
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ path('abonnementAdmin_index') }}">Les abonnements</a>
+              <a class="dropdown-item" href="{{ path('paiementAdmin_index') }}">Les paiements</a>
+              <a class="dropdown-item" href="{{ path('machine_index') }}">Les Machines</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if menuActif == 10 %}
+              active
+              {% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Utilisateurs
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ path('role_utilisateur_index') }}">Rôles</a>
+              <a class="dropdown-item" href="{{ path('utilisateur_index') }}">Utilisateurs</a>
+            </div>
+          </li>
+          {%  else %}
+          <li class="nav-item
+            {% if menuActif == 5 %}
+              active
+            {% endif %}">
+                <a class="nav-link" href="/login">Mon Compte</a>
+          </li>
+          {% endif %}
+
+          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if menuActif == 6 %}
+              active
+              {% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mon compte
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ path('page_modification_monCompte') }}">Modifier</a>
+              <a class="dropdown-item" href="/changerMdp">Changer mot de passe</a>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('security_logout') }}">Se déconnecter</a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endmacro%}

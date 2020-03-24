@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',8) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Paiements par abonnement</h1>
+
+    {% for abonnement in abonnements %}
+        <table class="table">
+
+            <tbody>
+                <tr>
+                    <th>Offre</th>  <td>{{ abonnement.offre.titre }}</td>
+                </tr>
+                <tr>
+                    <th>Date début</th><td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Date fin</th><td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Date validité</th><td>{{ abonnement.dateValidite ? abonnement.dateValidite|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Etat</th><td>{{ abonnement.etat   }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>DatePaiement</th>
+                <th>Montant</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for paiement1 in abonnement.paiement %}
+                <tr>
+                    <td>{{ paiement1.datePaiement ? paiement1.datePaiement|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ paiement1.montant }}</td>
+                    <td>
+                        <a href="{{ path('paiement_show', {'id': paiement1.id}) }}">Afficher</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Pas de paiement pour cet abonnement</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+     Pas d'abonnement en cours
+    {% endfor %}
+{% endblock %}

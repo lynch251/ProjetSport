@@ -1,0 +1,15 @@
+{{ form_start(form )  }}
+    {{ form_label(form.logoFile, null, { 'label' : 'Illustration : 2 Mo maximum ! .png, .jpg' }) }}
+    {{ form_widget(form.logoFile ) }}
+
+    {{ form_label(form.nom, null, { 'label': 'Désignation de la machine'}) }}
+    {{ form_widget(form.nom) }}
+
+    {{ form_label(form.uniteDuree, null, { 'label': 'Unité de durée (minutes, fois, 20 minutes)'}) }}
+    {{ form_widget(form.uniteDuree) }}
+
+    {{ form_label(form.uniteIntensite, null, { 'label': 'Unité d\'intensité (exemple : km/h, mètres/minute, minutes/500 mètres)'}) }}
+    {{ form_widget(form.uniteIntensite) }}
+    <button class="btn btn-primary mt-3">{{ button_label|default('Enregistrer') }}</button>
+
+{{ form_end(form) }}

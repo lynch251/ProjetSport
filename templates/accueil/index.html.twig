@@ -1,0 +1,393 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abdo en acier{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',1) }}
+
+{% endblock %}
+
+{% block body %}
+
+    <!-- Header -->
+    <header class="masthead intro-text" id="#accueil">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Bienvenue à Fitness Park !</div>
+
+                <!-- CAROUSEL --------------------->
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner mt-5 mb-5" role="listbox">
+                        <!-- Slide One - Set the background image for this slide in the line below -->
+                        <div class="carousel-item active text-center" >
+                            <div class="row">
+                                <div class="col-lg-12 pl-lg-5 pr-lg-5">
+                                    <img src="/img/img1.jpg" class="styleImg"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 pl-sm-5 pr-sm-5">
+                                    <p class="soustitre" style="color:#FFFFFF;"> SALLE DE SPORT HAUT DE GAMME</p>
+                                    <p class="textePage" style="color:#FFFFFF;">Les clubs Fitness Park sont conçus sur plus de 1000 m² afin d’offrir l’espace nécessaire aux adhérents pour pratiquer leurs activités sportives dans de bonnes conditions. Chez Fitness Park, vous retrouverez un espace musculation avec des machines à poids libres ou guidées et des haltères, un espace cardio training avec des appareils équipés d'un système audio et d’écrans pour vous divertir, un espace cross training pour vos entraînements les plus intensifs et un espace dédié aux sports de combats que vous pourrez pratiquer grâce à un ring et des sacs de frappe.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Slide Two - Set the background image for this slide in the line below -->
+                        <div class="carousel-item text-center" >
+                            <div class="row">
+                                <div class="col-lg-12 pl-lg-5 pr-lg-5">
+                                    <img src="/img/img2.jpg" class="styleImg"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 pl-sm-5 pr-sm-5" style="color:#FFFFFF;">
+                                    <p class="soustitre" style="color:#FFFFFF;">MATÉRIEL DE QUALITÉ EN LIBRE SERVICE</p>
+                                    <p class="textePage" style="color:#FFFFFF;">Chez Fitness Park, les prix sont low-cost mais pas le matériel ! Grâce à nos partenariats avec des constructeurs comme Technogym ou Hammer Strenght et nos partenaires fitness Yanga Sports Water ou LesMills, Fitness Park met à disposition de ses adhérents du matériel de fitness de dernière génération. Retrouvez les toutes dernières innovations.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide Three - Set the background image for this slide in the line below -->
+                        <div class="carousel-item text-center" >
+                            <div class="row">
+                                <div class="col-lg-12 pl-lg-5 pr-lg-5">
+                                    <img src="/img/img3.jpg" class="styleImg"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 pl-sm-5 pr-sm-5" style="color:#FFFFFF;">
+                                    <p class="soustitre" style="color:#FFFFFF;">SALLE DE SPORT HAUT DE GAMME</p>
+                                    <p class="textePage" style="color:#FFFFFF;">Les clubs Fitness Park sont conçus sur plus de 1000 m² afin d’offrir l’espace nécessaire aux adhérents pour pratiquer leurs activités sportives dans de bonnes conditions. Chez Fitness Park, vous retrouverez un espace musculation avec des machines à poids libres ou guidées et des haltères, un espace cardio training avec des appareils équipés d'un système audio et d’écrans pour vous divertir, un espace cross training pour vos entraînements les plus intensifs et un espace dédié aux sports de combats que vous pourrez pratiquer grâce à un ring et des sacs de frappe.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <!-- FIN CAROUSEL --------------------->
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#offres">Voir nos offres</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NOS VALEURS  Grid -->
+    <section class="bg-light page-section" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Nos valeurs</h2>
+                    <h3 class="section-subheading text-muted">Fitness Park, c'est bien plus qu'une salle !</h3>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+
+                            <p class="textePage">Parce que chacun a ses objectifs et ses motivations, Abdos en acier vous offre une expérience sportive décomplexée et sur-mesure.
+
+            Dans votre salle de sport, vous faites une pause, vous prenez soin de vous et de votre forme. Relax... Avec votre badge, vous accédez à tous les clubs Abdos en acier. C’est simple, agréable, sûr. C'est ça l'esprit !
+            </p>
+                        </div>
+                        <div class="col">
+                            <h3 class="titrePrincipe">Abdo en acier, c’est moi mais en mieux</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="titrePrincipe">Abdos en acier,
+            c'est la porte à côté</p>
+                        </div>
+                        <div class="col">
+
+                            <p class="textePage">Notre objectif est qu’il y ait forcément une salle Abdos en acier à côté de chez vous ou près de votre lieu de travail.
+
+            C’est aussi ça être proche de vous : vous éviter les kilomètres inutiles pour une remise en forme sans stress. Des lieux confortables, agréables, accessibles et... pas cher. Abdos en acier, c’est la salle de sport qui pense d’abord à vous.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col textePage">
+
+                            <p class="textePage">Rendre nos salles accessible, c'est aussi l'un de nos engagements. Quand on vous dit « salle de sport pas cher »... Vous pouvez keepcooler à partir de 29,90€* par mois en profitant de services de qualité !
+
+            Au mois ou par an… C’est vous qui choisissez votre formule d’abonnement. Et pour les étudiants, c’est plein d’avantages**...
+
+            Le sport sans prise de tête côté budget, c’est aussi Abdos en acier.</p>
+                        </div>
+                        <div class="col">
+                             <p class="titrePrincipe">Abdos en acier, pourquoi dépenser plus ?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Machines Grid -->
+    <section class="page-section" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Machines</h2>
+                    <h3 class="section-subheading text-muted">Découvrez nos plus belles machines !</h3>
+                </div>
+            </div>
+            <div class="row">
+
+                {% for machine in listeMachines %}
+                    {% if machine != null %}
+                        <div class="col-md-4 col-sm-6 portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" data-target="#portfolioModal{{machine.id}}">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content">
+                                        <i class="fas fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="{{ machine.logo }}" style="width:100%; height:auto;" alt="{{ machine.logo }}"/>
+                            </a>
+                            <div class="portfolio-caption">
+                                <h4>{{machine.nom}}</h4>
+                                <p class="text-muted">{{machine.description}}</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-md-4 col-sm-6 portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" data-target="#portfolioModal1">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content">
+                                        <i class="fas fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+                                <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+                            </a>
+                            <div class="portfolio-caption">
+                                <h4>Exemple de machine</h4>
+                                <p class="text-muted">Illustration</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Offres -->
+
+    <section class="page-section pricing py-5" id="offres">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" style="color:#FFFFFF;">
+                    <h2 class="section-heading text-uppercase">Nos offres</h2>
+                    <h3 class="section-subheading">Avec ou sans engagement</h3>
+                </div>
+            </div>
+            <div class="row">
+
+                {% for offre in listeOffre %}
+                    <!-- Free Tier -->
+                    <div class="col-lg-4">
+                        <div class="card mb-5 mb-lg-0">
+                            <div class="card-body">
+                                <h5 class="card-title text-muted text-uppercase text-center">{{ offre.titre }}</h5>
+
+                                {%  if offre.modalite.periodiciteEngagement == "an" and offre.modalite.periodiciteReglement == "mois"  %}
+                                    {% set parMois = offre.montant /12 %}
+                                    <h6 class="card-price text-center">{{ parMois }} €<span class="period">/month</span></h6>
+                                    <h6 class="card-price text-center">{{ offre.montant }} €<span class="period">/an</span></h6>
+                                {% else %}
+                                    <h6 class="card-price text-center">{{ offre.montant }} € <span class="period">{{ offre.modalite.periodiciteReglement }}</span></h6>
+                                {% endif %}
+                                <hr>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"></span>{{ offre.description }}</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ offre.modalite.titre }}</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ offre.modalite.description }}</li>
+                                </ul>
+                                {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+                                <form action="{{ path('choisirOffre',{'idOffre': offre.id}) }}" method="post">
+                                    <a  class="btn btn-block btn-primary text-uppercase">Je m'abonne !</a>
+                                </form>
+                                {% else %}
+                                        <a href="{{ path('inscription') }}" class="btn btn-block btn-primary text-uppercase">Je m'abonne !</a>
+                                {% endif%}
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Avis -->
+
+    <section class="bg-light page-section" id="avis">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Avis</h2>
+                    <h3 class="section-subheading">Satisfait ou remboursé pendant le premier mois !</h3>
+                </div>
+            </div>
+
+                <div class="container marketing text-center">
+                    <!-- Three columns of text below the carousel -->
+                    <div class="row">
+                        {% for avis in listeAvis %}
+                            {% if avis != null %}
+                            <div class="col-lg-4">
+                                <img class="rounded-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="" width="140" height="140">
+                                <h2><strong>{{ avis.auteurAvis }}</strong></h2><span class="text-muted">Ajouté le {{ avis.dateAvis|date("d/m/Y H:i:s") }} </span>
+                                <p>
+                                <div>
+                                    {{ avis.nbEtoileAvis }}/5 </br><b>{{ avis.titreAvis }}</b>
+                                </div>
+                                    {{ avis.messageAvis }}
+                                </p>
+                            </div><!-- /.col-lg-4 -->
+                            {% else %}
+                            <div class="container">
+                                <div class='row'>
+                                    <div class="col-6">Aucun avis de posté !</div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Newsletter</h2>
+                    <h3 class="section-subheading text-muted">Recevez les toutes dernières infos de votre salle !</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center mt-3">
+                                <div id="success"></div>
+                                <button id="unSendMessageButton" class="btn btn-danger btn-xl text-uppercase" type="submit">Désinscription</button>
+                                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase ml-3" type="submit">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Your Website 2019</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li class="list-inline-item">
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Machines Modals -->
+
+    <!-- Modal 1 -->
+    {% for machine in listeMachines %}
+        {% if machine != null %}
+    <div class="portfolio-modal modal fade" id="portfolioModal{{machine.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <!-- Project Details Go Here -->
+                                <h2 class="text-uppercase">{{ machine.nom }}</h2>
+                                <p class="item-intro text-muted">Accessible 24h/24h 6j/7j</p>
+                                <img class="img-fluid d-block mx-auto" src="{{ machine.logo }}" width="400px" alt="{{ machine.logo }}">
+                                <p>{{ machine.description }}</p>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fas fa-times"></i>
+                                    Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

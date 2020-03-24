@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Machine{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',10) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
+            <h1>Nouvelle machine</h1>
+
+            {{ include('machine/_form.html.twig') }}
+
+            <a class="btn btn-primary mt-3" href="{{ path('machine_index') }}" role="button">Retour</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

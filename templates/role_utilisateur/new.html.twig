@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RoleUtilisateur{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Create new RoleUtilisateur</h1>
+
+    {{ include('role_utilisateur/_form.html.twig') }}
+
+    <a href="{{ path('role_utilisateur_index') }}">back to list</a>
+{% endblock %}

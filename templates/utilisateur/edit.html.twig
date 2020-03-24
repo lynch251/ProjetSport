@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Utilisateur{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',10) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
+            <h1>Edit Utilisateur</h1>
+
+            {{ include('utilisateur/_form.html.twig', {'button_label': 'Update'}) }}
+
+            {{ include('utilisateur/_delete_form.html.twig') }}
+            <a href="{{ path('utilisateur_index') }}">back to list</a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{#\projetSynf\templates\accueil\offres.html.twig#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Abdo en acier{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',2) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                Pour valider votre offre, vous devez nous faire parvenir votre réglement.
+                Soit pas chèque : (adresse)
+                Soit par virement bancaire : (iban)
+                En vous remerciant pour votre adhésion,
+                Sportivement
+
+            </div> {#{ url('admin_edit_location',{'id': l.idLocation}) }#}
+
+        </div>
+    </div>
+{% endblock %}

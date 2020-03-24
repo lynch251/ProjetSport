@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+ {% block menu %}
+
+     {% import 'macro/macroMenu.html.twig' as macroMenu %}
+     {{ macroMenu.menu('Abdo en acier', 9) }}
+
+ {% endblock %}
+{% block title %}Modification d'un abonnement{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Modification d'un abonnement</h1>
+
+    {{ include('abonnementAdmin/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('abonnementAdmin_index') }}">Retour à la liste</a>
+
+{% endblock %}

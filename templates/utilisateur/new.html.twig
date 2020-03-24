@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Utilisateur{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',10) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+        <header class="masthead_text_black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-xl-9 mx-auto">
+                        <div class="card card-signin flex-row my-5">
+                            <div class="card-img-left d-none d-md-flex">
+                                <!-- Background image for card set in CSS! -->
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Nouvel utilisateur</h5>
+                                <form action="{{ path('utilisateur_new') }}" class="col-8 offset-2" method="post">
+                                    {% block formulaire %}
+                                        {{ form_start(formUtilisateur) }}
+                                        {{ form_row(formUtilisateur.email) }}
+                                        {{ form_row(formUtilisateur.login) }}
+                                        {{ form_row(formUtilisateur.nomUtilisateur) }}
+                                        {{ form_row(formUtilisateur.prenomUtilisateur) }}
+                                        {{ form_row(formUtilisateur.password) }}
+                                        {{ form_row(formUtilisateur.passwordConfirm) }}
+                                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Créer</button>
+                                        {{ form_end(formUtilisateur) }}
+                                        <hr class="my-4">
+                                        <a class="btn btn-danger" href="{{ path('utilisateur_index') }}" role="button">Retour à la liste</a>
+                                    {% endblock %}
+                                    {% if error_inscription   %}
+                                        <div class="alert alert-danger">
+                                            {{ error_inscription }}
+                                        </div>
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <a href="{{ path('utilisateur_index') }}">back to list</a>
+{% endblock %}
+
+

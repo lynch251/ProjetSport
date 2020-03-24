@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+ {% block menu %}
+     {% import 'macro/macroMenu.html.twig' as macroMenu %}
+     {{ macroMenu.menu('Abdo en acier', 5) }}
+
+ {% endblock %}
+
+
+{% block body %}
+<header class="masthead_text_black">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto content_header">
+                <div class="card card-signin flex-row my-5">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nouvelle inscription</h5>
+                        <form action="{{ path('inscription') }}" method="post">
+                            {% block formulaire %}
+                                {{ form_start(formUtilisateur) }}
+                                {{ form_row(formUtilisateur.email) }}
+                                {{ form_row(formUtilisateur.login) }}
+                                {{ form_row(formUtilisateur.nomUtilisateur) }}
+                                {{ form_row(formUtilisateur.prenomUtilisateur) }}
+                                {{ form_row(formUtilisateur.password) }}
+                                {{ form_row(formUtilisateur.passwordConfirm) }}
+                                {{ form_row(formUtilisateur.accordPolitiqueSite) }}
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">S'inscrire</button>
+                                {{ form_end(formUtilisateur) }}
+                            <a class="d-block text-center mt-2 small" href="{{ path('security_login') }}">Sign In</a>
+                            <hr class="my-4">
+                            {% endblock %}
+                            {% if error_inscription   %}
+                                <div class="alert alert-danger">
+                                    {{ error_inscription }}
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',8) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+    <h1>Liste de mes abonnements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Offre</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Date validité</th>
+                <th>Etat</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+
+                <td>{{ abonnement.offre.titre }}</td>
+                <td>{{ abonnement.dateDebut ? abonnement.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ abonnement.dateValidite ? abonnement.dateValidite|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ abonnement.etat   }}</td>
+                <td>
+                    {% if abonnement.renouveler == true %}
+                        <a href="{{ path('stopRenouveler',{'id': abonnement.id}) }}"><button>Stopper</button> </a>
+                    {% else %}
+                        Renouvellement suspendu
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas d'abonnement</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

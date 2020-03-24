@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisation index{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',10) }}
+
+{% endblock %}
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
+            <h1>Utilisations</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Séance</th>
+                        <th>Ordre</th>
+                        <th>Durée</th>
+                        <th>Quantité(s) / Vitesse</br>(Moyenne)</th>
+                        <th>Machine (nom)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for utilisation in utilisations %}
+                    <tr>
+                        <td>{{ utilisation.seance.intitule }} </br> {{ utilisation.seance.date ? utilisation.seance.date|date('d/M/Y') : '' }}</td>
+                        <td>{{ utilisation.ordre }}</td>
+                        <td>{{ utilisation.duree }} {{ utilisation.machine.uniteDuree }}</td>
+                        <td>{{ utilisation.quantite }} {{ utilisation.machine.uniteIntensite }}</td>
+                        <td>{{ utilisation.machine.nom }} </br><img src="{{ utilisation.machine.logo }}" width="150px" alt="{{ utilisation.machine.logo }}"/></td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ path('utilisation_show', {'id': utilisation.id}) }}">Voir</a>
+                            <a class="btn btn-primary" href="{{ path('utilisation_edit', {'id': utilisation.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-primary" href="{{ path('seance_index') }}" role="button">< Retour à mes séances</a>
+            <a class="btn btn-success" href="{{ path('utilisation_new') }}" role="button">Nouvelle utilisation</a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

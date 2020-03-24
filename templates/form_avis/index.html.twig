@@ -1,0 +1,52 @@
+{#\projetSynf\templates\form_avis\index.html.twig#}
+{% extends 'base.html.twig' %}
+
+{% block title %}Abdo en acier{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',4) }}
+
+{% endblock %}
+
+{% block body %}
+    {% block formulaire %}
+        {{ form_start(form) }}
+                {{ form_label(form.auteurAvis) }} {{ form_widget (form.auteurAvis) }}
+                {{ form_row(form.titreAvis) }}
+                {{ form_row(form.messageAvis) }}
+                {{ form_row(form.nbEtoileAvis) }}
+                <button type="submit" class="btn btn-primary">Créer</button>
+        {{ form_end(form) }}  
+    {% endblock %}    
+    {% block liste %}
+        <div class="container">
+            <div class='row'>
+                <div class="col-6"><h1>Liste des avis</h1> </div>
+            </div>
+        </div>
+    
+    
+        {% for avis in listeAvis %}
+                <div class="container">
+                    <div class='row'>
+                        <div class="col-3"> {{ avis.dateAvis|date("d/m/Y H:i:s") }} </div>
+                        <div class="col-3">{{ avis.auteurAvis }}</div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-6"> {{ avis.titreAvis }}</div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-6"> {{ avis.messageAvis }}</div>
+                    </div>
+                </div>
+                <br>
+        {% else %}
+                <div class="container">
+                    <div class='row'>
+                        <div class="col-6">Aucun avis de posté !</div>
+                    </div>
+                </div>
+        {% endfor %}
+    {% endblock %}
+{% endblock %}

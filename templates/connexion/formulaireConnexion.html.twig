@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+ {% block menu %}
+     {% import 'macro/macroMenu.html.twig' as macroMenu %}
+     {{ macroMenu.menu('Abdo en acier', 5) }}
+
+ {% endblock %}
+
+
+{% block body %}
+
+    <header class="masthead_text_black">
+    <div class="row login">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto content_header">
+                    {% if error %}
+                        <div class="alert alert-danger">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                    {% endif %}
+                    <div class="card card-signin my-5">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Connexion</h5>
+                            <form action="{{ path('security_login') }}" method="post">
+                                <div class="form-label-group">
+                                    <label for="username"> Utilisateur </label>
+                                    <input type="text" id="username" name="username" value="{{ last_username }}" class="form-control"/>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <label for="password">Mot de passe</label>
+                                    <input type="password" id="password" name="password" class="form-control" />
+                                </div>
+
+                                <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Se connecter</button>
+                                <hr class="my-4">
+                                <a class="d-block text-center mt-2 small" href="{{ path('inscription') }}">S'inscrire</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+{% endblock %}

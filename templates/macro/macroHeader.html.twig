@@ -1,0 +1,16 @@
+{% macro headerUser(test ="") %}
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in"> Bienvenue {{ app.user.prenomUtilisateur }} !</div>
+            {%  if is_granted('ROLE_ADMIN') %}
+                Dash Admin
+            {%  elseif is_granted('ROLE_USER') %}
+            <a class="btn btn-primary btn-xl text-uppercase" href="/seance/new">Débuter une séance</a>
+            {% endif %}
+
+        </div>
+    </div>
+</header>
+{% endmacro%}

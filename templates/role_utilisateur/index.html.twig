@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoleUtilisateur index{% endblock %}
+{% block menu %}
+    {% import 'macro/macroMenu.html.twig' as macroMenu %}
+
+    {{ macroMenu.menu('Abdo en acier',10) }}
+
+{% endblock %}
+{% block body %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
+    {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
+            <h1>Liste des rôles utilisateurs </h1>
+
+            <table class="table table-hover table-sm table-responsive overflow-hidden">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre<a href="{{ path('utilisateur_index_TrierRole') }}">Trier</a></th>
+                        <th>Titre sous Symfony</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for role_utilisateur in role_utilisateurs %}
+                    <tr>
+                        <td>{{ role_utilisateur.id }}</td>
+                        <td>{{ role_utilisateur.titre }}</td>
+                        <td>{{ role_utilisateur.titreSymfony }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ path('role_utilisateur_show', {'id': role_utilisateur.id}) }}" role="button">Voir</a>
+                            <a class="btn btn-primary" href="{{ path('role_utilisateur_edit', {'id': role_utilisateur.id}) }}" role="button">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a class="btn btn-primary" href="{{ path('role_utilisateur_new') }}" role="button">Nouveau</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
