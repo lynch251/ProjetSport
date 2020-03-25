@@ -37,9 +37,7 @@
                                 <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ offre.modalite.description }}</li>
                             </ul>
 
-                            <form action="{{ path('choisirOffre',{'idOffre': offre.id}) }}" method="post">
-                                <a  class="btn btn-block btn-primary text-uppercase">Je m'abonne !</a>
-                            </form>
+                                <a  href="{{ path('choisirOffre',{'idOffre': offre.id}) }}" class="btn btn-block btn-primary text-white text-uppercase">Je m'abonne !</a>
 
                         </div>
                     </div>

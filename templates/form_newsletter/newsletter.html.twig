@@ -13,17 +13,24 @@
         {% import 'macro/macroHeader.html.twig' as headerUser %}
         {{ headerUser.headerUser('test',1) }}
     {% endblock %}
-    {% block formulaire %}
-        {{ form_start(form) }}
-                {{ form_label(form.mail) }} {{ form_widget (form.mail) }}
-                {{ form_label(form.nom) }} {{ form_widget (form.nom) }}
-                <input type="submit" name="action" class="btn btn-primary" value="Créer">
-                <input type="submit" name="action" class="btn btn-primary" value="Désinscription">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-xl-5 mx-auto mt-5 mb-5">
+            <h1>Inscription newsletter</h1>
+                {% block formulaire %}
+                    {{ form_start(form) }}
+                            {{ form_label(form.mail) }} {{ form_widget (form.mail) }}
+                            {{ form_label(form.nom) }} {{ form_widget (form.nom) }}
+                            <input type="submit" name="action" class="btn btn-primary mt-3" value="Créer">
+                            <input type="submit" name="action" class="btn btn-danger mt-3 ml-2" value="Désinscription">
 
-        {{ form_end(form) }}  
+                    {{ form_end(form) }}
 
-    {% endblock %}    
-    {% if message is defined %}
-        {{ message }}
-    {% endif %}
+                {% endblock %}
+                {% if message is defined %}
+                    {{ message }}
+                {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

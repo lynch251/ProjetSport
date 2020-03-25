@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Utilisateur;
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Seance;
 use App\Form\SeanceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class SeanceController extends AbstractController
 {
-
 
     /**
      * @Route("/", name="seance_index", methods={"GET", "POST"})
@@ -36,26 +37,42 @@ class SeanceController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $seance = new Seance();
-        $seance->setDate(new \DateTime('now'));
-        // Récupère l'utilisateur en session
-        $utilisateur = $this->getUser();
-        $seance->setUtilisateur($utilisateur);
-        $form = $this->createForm(SeanceType::class, $seance);
-        $form->handleRequest($request);
+        $UtilisateurManager = $this->getDoctrine()->getRepository(Utilisateur::class);
+        $user = $UtilisateurManager->find($this->getUser());
+        $estAbonne = false;
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($seance);
-            $entityManager->flush();
+        foreach($user->getAbonnements() as $abo) {
+            if ($abo->getEtat() == 1) {
+                $estAbonne = true;
+            }
+        }
+        if ($estAbonne) {
+            $seance = new Seance();
+            $seance->setDate(new \DateTime('now'));
+            // Récupère l'utilisateur en session
+            $utilisateur = $this->getUser();
+            $seance->setUtilisateur($utilisateur);
+            $form = $this->createForm(SeanceType::class, $seance);
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('seance_index');
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($seance);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('seance_index');
+            }
+
+            return $this->render('seance/new.html.twig', [
+                'seance' => $seance,
+                'form' => $form->createView(),
+            ]);
+        }
+        else {
+            // Il faut souscrire une offre !
+            return $this->redirectToRoute('accueil');
         }
 
-        return $this->render('seance/new.html.twig', [
-            'seance' => $seance,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**

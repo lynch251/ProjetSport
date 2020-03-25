@@ -43,9 +43,9 @@ class FormAvisController extends AbstractController
     public function index(Request $request)
     {
         $avis = new Avis();
-        $avis->setAuteurAvis('Chuck');
-        $avis->setTitreAvis('Bradoc faites attention où vous mettez les pieds !');
-        $avis->setMessageAvis('Mes pieds, je les mets où je veux et c\'est souvent dans la gueule!');
+        $avis->setAuteurAvis($this->getUser()->getUserName());
+        $avis->setTitreAvis('Votre titre');
+        $avis->setMessageAvis('Votre message...');
    
         $ymd = DateTime::createFromFormat("Y-m-d H:i:s", date("Y-m-d H:i:s"));
         $avis->setDateAvis($ymd );

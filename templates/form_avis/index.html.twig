@@ -10,43 +10,55 @@
 {% endblock %}
 
 {% block body %}
-    {% block formulaire %}
-        {{ form_start(form) }}
-                {{ form_label(form.auteurAvis) }} {{ form_widget (form.auteurAvis) }}
-                {{ form_row(form.titreAvis) }}
-                {{ form_row(form.messageAvis) }}
-                {{ form_row(form.nbEtoileAvis) }}
-                <button type="submit" class="btn btn-primary">Créer</button>
-        {{ form_end(form) }}  
-    {% endblock %}    
-    {% block liste %}
-        <div class="container">
-            <div class='row'>
-                <div class="col-6"><h1>Liste des avis</h1> </div>
-            </div>
-        </div>
-    
-    
-        {% for avis in listeAvis %}
-                <div class="container">
-                    <div class='row'>
-                        <div class="col-3"> {{ avis.dateAvis|date("d/m/Y H:i:s") }} </div>
-                        <div class="col-3">{{ avis.auteurAvis }}</div>
-                    </div>
-                    <div class='row'>
-                        <div class="col-6"> {{ avis.titreAvis }}</div>
-                    </div>
-                    <div class='row'>
-                        <div class="col-6"> {{ avis.messageAvis }}</div>
-                    </div>
-                </div>
-                <br>
-        {% else %}
-                <div class="container">
-                    <div class='row'>
-                        <div class="col-6">Aucun avis de posté !</div>
-                    </div>
-                </div>
-        {% endfor %}
+    {% block headerUser %}
+        {% import 'macro/macroHeader.html.twig' as headerUser %}
+        {{ headerUser.headerUser('test',1) }}
     {% endblock %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-xl-10 mx-auto mt-5 mb-5">
+                <h1>Laisser un avis</h1>
+                    {% block formulaire %}
+                        {{ form_start(form) }}
+                                {{ form_label(form.auteurAvis) }} {{ form_widget (form.auteurAvis) }}
+                                {{ form_row(form.titreAvis) }}
+                                {{ form_row(form.messageAvis) }}
+                                {{ form_row(form.nbEtoileAvis) }}
+                                <button type="submit" class="btn btn-primary">C'est parti !</button>
+                        {{ form_end(form) }}
+                    {% endblock %}
+                    {% block liste %}
+                        <div class="container">
+                            <div class='row'>
+                                <div class="col-6"><h1>Liste des avis</h1> </div>
+                            </div>
+                        </div>
+
+
+                        {% for avis in listeAvis %}
+                                <div class="container">
+                                    <div class='row'>
+                                        <div class="col-3"> {{ avis.dateAvis|date("d/m/Y H:i:s") }} </div>
+                                        <div class="col-3">{{ avis.auteurAvis }}</div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class="col-6"> {{ avis.titreAvis }}</div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class="col-6"> {{ avis.messageAvis }}</div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class="col-6"> {{ avis.nbEtoileAvis }} / 5</div>
+                                    </div>
+                                </div>
+                                <br>
+                        {% else %}
+                                <div class="container">
+                                    <div class='row'>
+                                        <div class="col-6">Aucun avis de posté !</div>
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    {% endblock %}
 {% endblock %}

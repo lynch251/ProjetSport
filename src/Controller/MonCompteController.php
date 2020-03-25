@@ -7,11 +7,13 @@ use App\Entity\Avis;
 use App\Entity\Offre;
 use App\Entity\Utilisateur;
 use App\Entity\Seance;
+use App\Entity\Utilisation;
 use App\Form\AccordAbonnement;
 use App\Form\AvisType;
 use App\Form\InscriptionFormulaire;
 use App\Form\ModifierInformationFormulaire;
 use DateTime;
+use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,18 +41,28 @@ class MonCompteController extends AbstractController{
         $repositorySeance = $this->getDoctrine()->getRepository(Seance::class);
         $nbSeancesUser = $repositorySeance->findNumberByUser($utilisateur);
         // récupère les séances de l'utilisateur
-        $listeSeances = $repositorySeance->findByUser($utilisateur);
+        $listeSeances = $repositorySeance->findBy(['utilisateur'=>$utilisateur->getId()], ['date'=>'DESC']);
+
+        $datesUtilisations = [];
+        $coefficients = [];
+        foreach ($listeSeances as $seance) {
+            foreach ($seance->getUtilisations() as $utilisation) {
+                $datesUtilisations[] = $seance->getDate()->format('Y-m-d');
+                $coefficients[] = (int)$utilisation->getDuree() * (int)$utilisation->getQuantite();
+            }
+        }
+
 
         // récupère le nombre d'abonnements utilisateurs
         $repositoryAbonnement = $this->getDoctrine()->getRepository(Abonnement::class);
         $nbAbonnementUser = $repositoryAbonnement->findNumberByUser($utilisateur);
 
-
-
         return $this->render('accueil/accueilconnecte.html.twig', [
          'nbSeances' => $nbSeancesUser,
          'nbAbonnementUser' => $nbAbonnementUser,
-            'listeSeances' => $listeSeances
+            'listeSeances' => $listeSeances,
+            'coefficients' => $coefficients,
+            'datesUtilisations' => $datesUtilisations
         ]);
     }
 
@@ -171,10 +183,14 @@ class MonCompteController extends AbstractController{
     {
         $formUtilisateur = $this->createForm(AccordAbonnement::class);
 
-
-
         $listeAbonnement = $this->getUser()->getAbonnements();
-        if(count($listeAbonnement) == 0)
+        $estAbonne = false;
+        foreach ($listeAbonnement as $abo) {
+            if ($abo->getEtat() == 1) {
+                $estAbonne = true;
+            }
+        }
+        if($estAbonne == false)
         {
             $em = $this->getDoctrine()->getManager();
             $abonnement = new Abonnement();

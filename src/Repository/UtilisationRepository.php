@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Seance;
+use App\Entity\Utilisateur;
 use App\Entity\Utilisation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -28,6 +29,24 @@ class UtilisationRepository extends ServiceEntityRepository
             $requete->execute();
             return $requete->fetchAll();
 
+        } catch (DBALException $e) {
+            echo($e->getMessage());
+        }
+    }
+    /*
+     * Récupère toutes les utilisations d'un utilisateur donné
+     */
+    public function findByUser(Utilisateur $user) {
+        try {
+            $id = $user->getId();
+            $requete = $this->getEntityManager()->getConnection()->prepare('SELECT utilisation.* FROM utilisation INNER JOIN seance ON utilisation.seance_id = seance.id WHERE seance.utilisateur_id = :id');
+            $requete->bindValue(':id', (int) $id, \PDO::PARAM_INT);
+            $requete->execute();
+
+            foreach ($requete->fetchAll() as $utilisation) {
+
+            }
+            return $requete->fetchAll();
         } catch (DBALException $e) {
             echo($e->getMessage());
         }

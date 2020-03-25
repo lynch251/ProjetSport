@@ -17,10 +17,15 @@ class AvisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('auteurAvis', TextType::class)
+            ->add('auteurAvis', TextType::class, array('disabled' => 'true'))
             ->add('titreAvis', TextType::class)
             ->add('messageAvis', TextareaType::class)
-            ->add('nbEtoileAvis', RangeType::class)
+            ->add('nbEtoileAvis', RangeType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'max' => 5
+                ]
+            ])
             ->add('id', HiddenType::class)
         ;//Appel à la chaîne de la fonction add sur $builder
     }

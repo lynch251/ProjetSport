@@ -166,14 +166,14 @@ class Abonnement
      * @return int 0, si jamais de paiementUser, 1 si paiementUser en cours de validité, 2 si paiementUser pas actif, 3 si abonnementUser fin
      */
     public function getEtat():int {
-        if(count($this->paiement)==0)
+            // count($this->paiement)==0
+        //$this->dateValidite >= date('now')
+        if($this->dateFin >= date('now')) {
+            return 1;   // abonné
+        }
+        else {
             return 0;
-        if($this->dateFin >= date())
-            return 3;
-        if($this->dateValidite >= date())
-            return 1;
-        return 2;
-
+        }
     }
 
 
